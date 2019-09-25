@@ -1,0 +1,21 @@
+---
+- hosts: all
+  vars:
+    host_user: "{{ lookup('env','USER') }}"
+    project_root: "~/project"
+    project_path: "{{ project_root }}"
+    sdkman_script_install_url: http://get.sdkman.io
+    sdkman_folder: "~/.sdkman"
+  tasks:
+    - name: make sure the system encoding is utf-8
+      become: yes
+      template:
+        src: templates/locale
+        dest: /etc/default/locale
+        owner: root
+        group: root
+        mode: 0644
+
+    - include: tasks/apt.yml
+    - include: tasks/oh-my-zshell.yml
+    - include: tasks/java.yml

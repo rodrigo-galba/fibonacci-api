@@ -1,0 +1,40 @@
+---
+- name: Add Java 11 repo
+  become: yes
+  apt_repository:
+    repo: ppa:openjdk-r/ppa
+    state: present
+
+- name: Install Java base packages
+  apt: pkg={{ item }} state=latest
+  become: yes
+  with_items:
+    - openjdk-11-jdk
+
+- name: check if sdkman is installed
+  shell: test -d {{ sdkman_folder }} && echo "yes" || echo "no"
+  register: is_sdkman_installed
+
+- name: Install SDKMAN!
+  when: is_sdkman_installed.stdout == "no"
+  shell: curl -s {{sdkman_script_install_url}} | bash executable=/bin/zsh
+  become: no
+
+- name: add sdkman in .zshrc
+  lineinfile: dest=~/.zshrc regexp="\/.sdkman/bin\/sdkman\-init\.sh" line='[[ -s "{{sdkman_folder}}/bin/sdkman-init.sh" ]] && source "{{sdkman_folder}}/bin/sdkman-init.sh"'
+  become: no
+
+- name: Install springboot
+  become: no
+  # This will read your bash profile file, which would setup sdkman-init.sh.
+  shell: source {{sdkman_folder}}/bin/sdkman-init.sh && sdk install springboot 1.5.10.RELEASE
+  args:
+    chdir: "~"
+    executable: /bin/zsh
+
+- name: Install Gradle
+  become: no
+  shell: source {{sdkman_folder}}/bin/sdkman-init.sh && sdk install gradle 5.6
+  args:
+    chdir: "~"
+    executable: /bin/zsh
