@@ -1,6 +1,7 @@
 package me.rogal.fibonacci.controller;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import me.rogal.fibonacci.service.FibonacciService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@Slf4j
 public class FibonacciController {
 
     private final FibonacciService service;
@@ -23,6 +25,7 @@ public class FibonacciController {
 
     @PostMapping(value = "/{number}")
     public ResponseEntity<List<Long>> calculate(@PathVariable Long number) {
+        log.info("Processing number {}", number);
         if(number == null) {
             return ResponseEntity.notFound().build();
         }
@@ -31,7 +34,3 @@ public class FibonacciController {
         return ResponseEntity.ok().body(result);
     }
 }
-// 45 - 20s
-// 42 -
-// 41 - 3s
-// 40 - 2s
