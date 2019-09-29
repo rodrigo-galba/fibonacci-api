@@ -18,11 +18,6 @@ public class FibonacciController {
 
     private final FibonacciService service;
 
-    @GetMapping("/")
-    public String index() {
-        return "OK";
-    }
-
     @PostMapping(value = "/{number}")
     public ResponseEntity<List<Long>> calculate(@PathVariable Long number) {
         log.info("Processing number {}", number);
