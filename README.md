@@ -1,3 +1,5 @@
+<a href="https://codeclimate.com/github/rgalba/fibonacci-api/maintainability"><img src="https://api.codeclimate.com/v1/badges/c1d58ae6898cd8866e54/maintainability" /></a>
+
 # Fibonacci API
 
 Simple API to calculate Fibonacci series for a given number.
