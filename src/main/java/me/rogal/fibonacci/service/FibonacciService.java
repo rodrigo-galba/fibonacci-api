@@ -8,11 +8,11 @@ import java.util.List;
 @Service
 public class FibonacciService {
 
-    public long calculate(Integer number) {
-        if(number == 0)
-            return 0;
+    public Long calculate(Integer number) {
+        if(number == null || number == 0)
+            return 0L;
         else if(number == 1)
-            return 1;
+            return 1L;
         else
             return calculate(number - 1) + calculate(number - 2);
     }
