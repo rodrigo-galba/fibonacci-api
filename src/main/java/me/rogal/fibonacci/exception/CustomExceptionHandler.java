@@ -16,24 +16,22 @@ public class CustomExceptionHandler {
 
     @ExceptionHandler(ServletRequestBindingException.class)
     public final ResponseEntity<Object> handleHeaderException(Exception ex, WebRequest request) {
-        List<String> details = new ArrayList<>();
-        details.add(ex.getLocalizedMessage());
-        ErrorResponse error = ErrorResponse.builder()
-                .message("Bad Request")
-                .details(details)
-                .build();
-        return new ResponseEntity(error, HttpStatus.BAD_REQUEST);
+        return buildResponse(HttpStatus.BAD_REQUEST, ex, "Bad Request");
     }
 
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request)
     {
+        return buildResponse(HttpStatus.INTERNAL_SERVER_ERROR, ex, "Server Error");
+    }
+
+    ResponseEntity buildResponse(HttpStatus status, Exception ex, String message) {
         List<String> details = new ArrayList<>();
         details.add(ex.getLocalizedMessage());
         ErrorResponse error = ErrorResponse.builder()
-                .message("Server Error")
+                .message(message)
                 .details(details)
                 .build();
-        return new ResponseEntity(error, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity(error, status);
     }
 }
