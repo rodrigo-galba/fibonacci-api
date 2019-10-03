@@ -4,24 +4,27 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.LongStream;
 
 @Service
 public class FibonacciService {
 
-    public Long calculate(Integer number) {
+    public Long calculate(Long number) {
         if(number == null || number == 0)
             return 0L;
-        else if(number == 1)
+        if(number == 1)
             return 1L;
-        else
-            return calculate(number - 1) + calculate(number - 2);
+
+        return calculate(number - 1) + calculate(number - 2);
     }
 
     public List<Long> calculateSeries(Long number) {
         List<Long> result = new ArrayList();
-        for (Integer i = 1; i <= number; i++) {
-            result.add(calculate(i));
-        }
+
+        if (number == null ) return result;
+
+        LongStream.range(0, number)
+                .forEach(i -> result.add(calculate(i+1)));
         return result;
     }
 }
