@@ -5,7 +5,8 @@
 
 # Fibonacci API
 
-Simple API to calculate Fibonacci series for a given number.
+Awesome Simple API to calculate Fibonacci series for a given number.  
+This API can be deployed on a serverless cluster using AWS Fargate.
 
 ## Stack
 
