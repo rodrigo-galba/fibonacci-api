@@ -48,4 +48,11 @@ jacocoTestReport {
 		csv.enabled false
 		html.destination file("${buildDir}/jacocoHtml")
 	}
+
+	afterEvaluate {
+		classDirectories = files(classDirectories.files.collect {
+			fileTree(dir: it,
+					exclude: 'me/rogal/fibonacci/configuration/**')
+		})
+	}
 }
