@@ -14,12 +14,12 @@ class FibonacciServiceTest {
     private FibonacciService service;
 
     @BeforeEach
-    public void setup() {
+    void setup() {
         service = new FibonacciService();
     }
 
     @Test
-    public void testCalculate() {
+    void testCalculate() {
         assertThat(1L, equalTo(service.calculate(1L)));
         assertThat(1L, equalTo(service.calculate(2L)));
         assertThat(2L, equalTo(service.calculate(3L)));
@@ -29,21 +29,21 @@ class FibonacciServiceTest {
     }
 
     @Test
-    public void calculateWhenZero() {
+    void testCalculateWhenZero() {
         Long result = service.calculate(0L);
         Long expected = 0L;
         assertThat(expected, equalTo(result));
     }
 
     @Test
-    public void calculateWhenNull() {
+    void testCalculateWhenNull() {
         Long result = service.calculate(null);
         Long expected = 0L;
         assertThat(expected, equalTo(result));
     }
 
     @Test
-    public void calculateSeries() {
+    void testCalculateSeries() {
         assertThat(List.of(1L), equalTo(service.calculateSeries(1L)));
         assertThat(List.of(1L, 1L), equalTo(service.calculateSeries(2L)));
         assertThat(List.of(1L, 1L, 2L), equalTo(service.calculateSeries(3L)));
@@ -53,12 +53,12 @@ class FibonacciServiceTest {
     }
 
     @Test
-    public void calculateSeriesWhenZero() {
+    void testCalculateSeriesWhenZero() {
         assertThat(List.of(), equalTo(service.calculateSeries(0L)));
     }
 
     @Test
-    public void calculateSeriesWhenNull() {
+    void testCalculateSeriesWhenNull() {
         assertThat(List.of(), equalTo(service.calculateSeries(null)));
     }
 }
