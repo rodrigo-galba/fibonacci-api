@@ -7,6 +7,14 @@
 
 Simple API to calculate Fibonacci series for a given number.
 
+## Stack
+
+- Java 11
+- Springboot 2
+- Gradle 5.6
+- Docker
+- AWS Fargate
+
 ## Credentials
 
 In order to use the API, follow the credentials:
@@ -43,7 +51,7 @@ $ curl --request GET \
 }
 ```
 
-> To shutdown application for testing purposes
+> To shutdown application for HA testing purposes
 
 ```shell script
 $ curl --request POST \
@@ -80,75 +88,8 @@ $ curl --request GET \
 			"href": "http://localhost:8080/actuator/caches/{cache}",
 			"templated": true
 		},
-		"caches": {
-			"href": "http://localhost:8080/actuator/caches",
-			"templated": false
-		},
-		"health": {
-			"href": "http://localhost:8080/actuator/health",
-			"templated": false
-		},
-		"health-path": {
-			"href": "http://localhost:8080/actuator/health/{*path}",
-			"templated": true
-		},
-		"info": {
-			"href": "http://localhost:8080/actuator/info",
-			"templated": false
-		},
-		"conditions": {
-			"href": "http://localhost:8080/actuator/conditions",
-			"templated": false
-		},
-		"shutdown": {
-			"href": "http://localhost:8080/actuator/shutdown",
-			"templated": false
-		},
-		"configprops": {
-			"href": "http://localhost:8080/actuator/configprops",
-			"templated": false
-		},
-		"env": {
-			"href": "http://localhost:8080/actuator/env",
-			"templated": false
-		},
-		"env-toMatch": {
-			"href": "http://localhost:8080/actuator/env/{toMatch}",
-			"templated": true
-		},
-		"loggers": {
-			"href": "http://localhost:8080/actuator/loggers",
-			"templated": false
-		},
-		"loggers-name": {
-			"href": "http://localhost:8080/actuator/loggers/{name}",
-			"templated": true
-		},
-		"heapdump": {
-			"href": "http://localhost:8080/actuator/heapdump",
-			"templated": false
-		},
-		"threaddump": {
-			"href": "http://localhost:8080/actuator/threaddump",
-			"templated": false
-		},
-		"metrics": {
-			"href": "http://localhost:8080/actuator/metrics",
-			"templated": false
-		},
-		"metrics-requiredMetricName": {
-			"href": "http://localhost:8080/actuator/metrics/{requiredMetricName}",
-			"templated": true
-		},
-		"scheduledtasks": {
-			"href": "http://localhost:8080/actuator/scheduledtasks",
-			"templated": false
-		},
-		"mappings": {
-			"href": "http://localhost:8080/actuator/mappings",
-			"templated": false
-		}
-	}
+        ...
+    }
 }
 ```
 
