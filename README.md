@@ -16,6 +16,11 @@ This API can be deployed on a serverless cluster using AWS Fargate.
 - Docker
 - AWS Fargate
 
+## Serverless deployment on AWS Fargate
+
+![AWS Fargate Diagram](./docs/aws-fargate-fibonacci-api.png)  
+*AWS Fargate diagram*
+
 ## Credentials
 
 In order to use the API, follow the credentials:
