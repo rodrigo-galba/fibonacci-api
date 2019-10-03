@@ -1,4 +1,5 @@
-<a href="https://codeclimate.com/github/rgalba/fibonacci-api/maintainability"><img src="https://api.codeclimate.com/v1/badges/c1d58ae6898cd8866e54/maintainability" /></a>
+[![Maintainability](https://api.codeclimate.com/v1/badges/c1d58ae6898cd8866e54/maintainability)](https://codeclimate.com/github/rgalba/fibonacci-api/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/c1d58ae6898cd8866e54/test_coverage)](https://codeclimate.com/github/rgalba/fibonacci-api/test_coverage)
 [![Build Status](https://travis-ci.org/rgalba/fibonacci-api.svg?branch=master)](https://travis-ci.org/rgalba/fibonacci-api)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
