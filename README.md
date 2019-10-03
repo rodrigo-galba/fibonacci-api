@@ -6,7 +6,6 @@
 # Fibonacci API
 
 Awesome Simple API to calculate Fibonacci series for a given number.  
-This API can be deployed on a serverless cluster using AWS Fargate.
 
 ## Stack
 
@@ -19,18 +18,30 @@ This API can be deployed on a serverless cluster using AWS Fargate.
 ## Serverless deployment on AWS Fargate
 
 ![AWS Fargate Diagram](./docs/aws-fargate-fibonacci-api.png)  
-*AWS Fargate diagram*
+*AWS Fargate diagram*  
 
-## Credentials
+---
+This API can be deployed on a serverless cluster using AWS Fargate.  
+Pros:
+- There is no need to manage infraestructure (*serverless*). AWS ECS will create a process based on CPU and memory preferences.
+- There is no need to manage a container orchestration service (*clusterless*).
+- Elasticity and scalability (scale in and out) built in.
+- Springboot-based development for serverless (or any container-compatible stack).
+- Integration with AWS native services (IAM, Cloudwatch, security group etc) at the container level.
+
+Cons:
+- It is not possible to run `exec` direct to a container. It require other ways to debug/trace. Ex: `spring actuator API`.
+
+## How to use 
+
+#### Credentials
 
 In order to use the API, follow the credentials:
 
 > username: admin  
-> password: s3cr3t
+> password: s3cr3t  
 
-## How to use 
-
-> To calculate series for number 2  
+1 - To calculate series for number 2  
 
 ```shell script
 $ curl --request POST \
@@ -44,7 +55,7 @@ $ curl --request POST \
 ]
 ```
 
-> To health check  
+2 - To health check  
 
 ```shell script
 $ curl --request GET \
@@ -57,7 +68,7 @@ $ curl --request GET \
 }
 ```
 
-> To shutdown application for HA testing purposes
+3 - To shutdown application for HA testing purposes
 
 ```shell script
 $ curl --request POST \
@@ -99,11 +110,16 @@ $ curl --request GET \
 }
 ```
 
+## How to build
+
+In order to run, install gradle 5.6 and run `gradle build` on repo path.
 
 ## Useful Docker commands
 
-- docker images
-- docker container ls
-- docker logs <container_name>
-- docker container rm <container_name
-- docker image rm <image_name
+```sh
+docker images
+docker container ls
+docker logs <container_name>
+docker container rm <container_name
+docker image rm <image_name
+```
