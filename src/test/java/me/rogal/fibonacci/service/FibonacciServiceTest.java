@@ -1,7 +1,8 @@
 package me.rogal.fibonacci.service;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
@@ -9,14 +10,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
 class FibonacciServiceTest {
 
-    private FibonacciService service;
-
-    @BeforeEach
-    void setup() {
-        service = new FibonacciService();
-    }
+    @Autowired
+    FibonacciService service;
 
     @Test
     void testCalculate() {
