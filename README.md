@@ -44,8 +44,7 @@ In order to use the API, follow the credentials:
 1 - To calculate series for number 2  
 
 ```shell script
-$ curl --request POST \
-  --url http://localhost:8080/api/calculate/2 \
+$ curl http://localhost:8080/api/calculate/2 \
   --header 'accept: application/json' \
   --header 'authorization: Basic YWRtaW46czNjcjN0'
 
