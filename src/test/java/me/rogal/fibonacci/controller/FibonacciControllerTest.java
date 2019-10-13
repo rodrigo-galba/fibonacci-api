@@ -39,12 +39,4 @@ class FibonacciControllerTest {
         assertEquals(List.of(number), response.getBody());
     }
 
-    @Test
-    void testNumberValidationOnCalculate() {
-        ResponseEntity<List<Long>> response = controller.calculate(null);
-
-        verify(service, never()).calculateSeries(any());
-        assertTrue(response.getStatusCode().isError());
-        assertNull(response.getBody());
-    }
 }
