@@ -11,6 +11,8 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -26,6 +28,7 @@ public class FibonacciControllerMvcTest {
 
     @Test
     void testCalculate() throws Exception {
+        calculateRequest(0L, List.of());
         calculateRequest(1L, List.of(1L));
         calculateRequest(2L, List.of(1L, 1L));
         calculateRequest(3L, List.of(1L, 1L, 2L));
@@ -40,5 +43,27 @@ public class FibonacciControllerMvcTest {
                 .header("authorization", BASIC_CREDENTIAL_HEADER))
                 .andExpect(status().isOk())
                 .andExpect(content().json(expected.toString()));
+    }
+
+    @Test
+    public void testMinimumNumberWhenCalculate() {
+        validateErrorCalculateRequest(-1L, "must be greater than or equal to 0");
+    }
+
+    @Test
+    public void testMaximumNumberWhenCalculate() {
+        validateErrorCalculateRequest(41L, "must be less than or equal to 40");
+    }
+
+    private void validateErrorCalculateRequest(Long negativeNumber, String expectedValidationMessage) {
+        try {
+            mockMvc.perform(get("/api/calculate/{number}", negativeNumber)
+                    .contentType(MediaType.APPLICATION_JSON_VALUE)
+                    .header("authorization", BASIC_CREDENTIAL_HEADER))
+                    .andExpect(status().is4xxClientError());
+            fail("should validate invalid request");
+        } catch (Exception e) {
+            assertThat(e.getLocalizedMessage()).contains(expectedValidationMessage);
+        }
     }
 }
