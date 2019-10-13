@@ -128,9 +128,9 @@ docker image rm <image_name
 To facilitate dev setup, there is an virtual box provisioned using Ansible.  
 To use it:
 
-1 - Install Vagrant `2.2.5` or higher
-2 - Install VirtualBox `6.0` or higher
-3 - Initialize vm by running on directory`s repo:
+1 - Install Vagrant `2.2.5` or higher  
+2 - Install VirtualBox `6.0` or higher  
+3 - Initialize vm by running on directory`s repo  
 
 ```shell script
 git clone https://github.com/rgalba/fibonacci-api
