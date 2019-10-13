@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import me.rogal.fibonacci.service.FibonacciService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 @RequestMapping(path = "/api")
 @RequiredArgsConstructor
 @Slf4j
+@Validated
 public class FibonacciController {
 
     private final FibonacciService service;
