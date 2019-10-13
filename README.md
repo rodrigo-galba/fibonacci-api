@@ -122,3 +122,38 @@ docker logs <container_name>
 docker container rm <container_name
 docker image rm <image_name
 ```
+
+## Local box using Ansible
+
+To facilitate dev setup, there is an virtual box provisioned using Ansible.  
+To use it:
+
+1 - Install Vagrant `2.2.5` or higher
+2 - Install VirtualBox `6.0` or higher
+3 - Initialize vm by running on directory`s repo:
+
+```shell script
+git clone https://github.com/rgalba/fibonacci-api
+cd fibonacci-api
+vagrant up
+```
+
+4 - Access machine by running:
+
+```shell script
+vagrant ssh
+```
+
+> The `/vagrant` folder will be mounted with project root dir content.  
+
+5 - Build project
+
+```shell script
+gradle build
+```
+
+6 - Run the app
+
+```shell script
+gradle bootRun
+```
