@@ -50,7 +50,8 @@ jacocoTestReport {
 	afterEvaluate {
 		classDirectories = files(classDirectories.files.collect {
 			fileTree(dir: it,
-					exclude: 'me/rogal/fibonacci/configuration/**')
+					exclude: ['me/rogal/fibonacci/configuration/**',
+							  'me/rogal/fibonacci/Application*'])
 		})
 	}
 }
