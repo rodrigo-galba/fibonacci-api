@@ -123,7 +123,7 @@ docker container rm <container_name
 docker image rm <image_name
 ```
 
-## Local box using Ansible
+## Local dev box using Ansible
 
 To facilitate dev setup, there is an virtual box provisioned using Ansible.  
 To use it:
