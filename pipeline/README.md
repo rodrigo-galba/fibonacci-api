@@ -51,3 +51,11 @@ Push to CodeCommit repo:
 ```shell script
 git push -u codecommit master
 ```
+
+## Step 2: AWS CodeBuild setup
+
+All the commands and related settings are placed in `buildspec.yml` file.
+
+```shellscript
+
+```
