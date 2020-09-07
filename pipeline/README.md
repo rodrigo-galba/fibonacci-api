@@ -41,5 +41,5 @@ $ aws codecommit create-repository --repository-name FibonacciApp --repository-d
 To add this repo as a new Git remote:
 
 ```shell script
-git remote add codecommit ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/FibonacciApp
+git remote add codecommit https://git-codecommit.us-east-1.amazonaws.com/v1/repos/FibonacciApp
 ```
