@@ -45,3 +45,9 @@ git remote add codecommit https://git-codecommit.us-east-1.amazonaws.com/v1/repo
 ```
 
 Setup SSH key to access CodeCommit. [Doc](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-ssh-unixes.html#setting-up-ssh-unixes-keys)
+
+Push to CodeCommit repo:
+
+```shell script
+git push -u codecommit master
+```
