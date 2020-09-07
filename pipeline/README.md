@@ -43,3 +43,5 @@ To add this repo as a new Git remote:
 ```shell script
 git remote add codecommit https://git-codecommit.us-east-1.amazonaws.com/v1/repos/FibonacciApp
 ```
+
+Setup SSH key to access CodeCommit. [Doc](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-ssh-unixes.html#setting-up-ssh-unixes-keys)
