@@ -84,7 +84,7 @@ Create a CloudWatch Event to trigger build on every commit for the project repos
     "aws.codecommit"
   ],
   "detail-type": [
-    "CodeCommit Comment on Commit"
+    "CodeCommit Repository State Change"
   ],
   "resources": [
     "arn:aws:codecommit:us-east-1:omitted:FibonacciApp"
