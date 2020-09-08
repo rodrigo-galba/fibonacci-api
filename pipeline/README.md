@@ -56,6 +56,22 @@ git push -u codecommit master
 
 All the commands and related settings are placed in `buildspec.yml` file.
 
-```shellscript
-
-```
+1. Create build project called `Fibonacci-Staging` using following configuration:
+  - Source
+    - provider: CodeCommit
+    - Primary repository: FibonacciApp
+    - Source version: `production` branch
+  - Environment:
+    image: amazonlinux2 - standard 3
+    type: Linux
+    service role: new service role `codebuild-FibonacciApp-Dev-service-role`
+    compute: 3GB memory, 2 vCPU
+    timeout: 5 minutes
+    queued timeout: 8h
+  - Buildspec: use the `buildspec.yml` in the source code root dir
+  - Artifacts
+    - upload location: S3 (create a bucket called `fibonacciapp-cicd-artifacts` if not exists)
+    - Namespace type: Build ID
+    - packaging: None
+    - encryption: KMS
+  - Logs: enabled to CloudWatch logs
