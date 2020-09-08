@@ -56,7 +56,7 @@ git push -u codecommit master
 
 All the commands and related settings are placed in `buildspec.yml` file.
 
-1. Create build project called `Fibonacci-Staging` using following configuration:
+Create build project called `Fibonacci-Production` using following configuration:
   - Source
     - provider: CodeCommit
     - Primary repository: FibonacciApp
@@ -75,3 +75,19 @@ All the commands and related settings are placed in `buildspec.yml` file.
     - packaging: None
     - encryption: KMS
   - Logs: enabled to CloudWatch logs
+
+Create a CloudWatch Event to trigger build on every commit for the project repository. Event pattern:
+
+```
+{
+  "source": [
+    "aws.codecommit"
+  ],
+  "detail-type": [
+    "CodeCommit Comment on Commit"
+  ],
+  "resources": [
+    "arn:aws:codecommit:us-east-1:omitted:FibonacciApp"
+  ]
+}
+```
